@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Track Harkness table discussions — visualize speaking order and conversation flow."
+    />
+    <title>Harkness Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Source+Sans+3:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <header class="toolbar">
+        <div class="toolbar-brand">
+          <h1>Harkness Tracker</h1>
+          <span class="toolbar-subtitle">Discussion Map</span>
+        </div>
+        <div class="toolbar-actions">
+          <button id="btn-mode" class="btn btn-primary" type="button">
+            Start Discussion
+          </button>
+          <button id="btn-undo" class="btn" type="button" disabled>Undo</button>
+          <button id="btn-reset" class="btn" type="button" disabled>Reset</button>
+          <button id="btn-export" class="btn" type="button">Export</button>
+          <label class="btn btn-import">
+            Import
+            <input id="input-import" type="file" accept=".json,application/json" hidden />
+          </label>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <section class="table-panel" aria-label="Harkness table">
+          <div id="table-container"></div>
+          <p id="mode-hint" class="mode-hint">
+            Click a seat to enter a name. Right-click to mark as Teacher.
+          </p>
+        </section>
+
+        <aside class="sidebar">
+          <section class="sidebar-section">
+            <h2>Session Notes</h2>
+            <textarea
+              id="notes"
+              class="notes-input"
+              placeholder="Observations, prompts, follow-ups…"
+              rows="8"
+            ></textarea>
+          </section>
+
+          <section class="sidebar-section">
+            <h2>Speak Order</h2>
+            <ol id="speak-order-list" class="speak-order-list">
+              <li class="speak-order-empty">No speakers yet</li>
+            </ol>
+          </section>
+        </aside>
+      </main>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
